@@ -53,7 +53,23 @@ const AxiosApi = {
     return await axios.post(EZEN_DOMAIN + `/api/category/new`, cate);
   },
   cateDelete: async (id) => {
-    return await axios.post(EZEN_DOMAIN + `/api/category/delete/${id}`);
+    return await axios.delete(EZEN_DOMAIN + `/api/category/delete/${id}`);
+  },
+
+  getBoardList: async () => {
+    return await axios.get(EZEN_DOMAIN + `/api/board/list`);
+  },
+
+  boardWrite: async (selectedCategory, content, email, url, title) => {
+    const params = {
+      categoryId: selectedCategory,
+      content: content,
+      email: email,
+      img: url,
+      title: title,
+    };
+
+    return await axios.post(EZEN_DOMAIN + `/api/board/new`, params);
   },
 };
 
